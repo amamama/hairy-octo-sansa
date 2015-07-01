@@ -1,5 +1,6 @@
 function parse_line(line,   ret) {
 	if (line ~ /^#[[:space:]]*[^[:space:]].*[^[:space:]][[:space:]]*$/) {
+		ret = ret tag("h1", parse_line(gensub(/^#[[:space:]]*([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)));
 
 	} else if (line ~ /^##[[:space:]]*[^[:space:]].*[^[:space:]][[:space:]]*$/) {
 		ret = ret tag("h2", parse_line(gensub(/^##[[:space:]]*([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)));
@@ -77,6 +78,9 @@ function parse_para(para,   lines, ret) {
 BEGIN {
 	RS = "";
 	FS = "\n";
+	print "<!DOCTYPE html>""<html>"
+	print tag("head","<meta charset=\"UTF-8\">");
+	print "<body>"
 }
 
 {
@@ -85,4 +89,6 @@ BEGIN {
 }
 
 END {
+	print "</body>"
+	print "</html>"
 }
