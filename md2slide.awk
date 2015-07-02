@@ -28,19 +28,30 @@ function parse_line(line,   ret) {
 	return ret
 }
 
-function tag(stag, body) {
-	return "<" stag ">" body "</" stag ">"
+function tag(stag, body, opt) {
+	return "<" stag " " opt ">" body "</" stag ">"
 }
 
 function parse_para(para,   lines, ret) {
 	max_idx = split(para, lines)
 	for (i = 1; i <= max_idx; i++) {
 		if (lines[i + 1] ~ /^==+/) {
-			ret = ret tag("h1", parse_line(lines[i]))
+			if (slide == "hamaji" || slide == "shinh" || slide == "simple" || slide == "s") {
+				headline = tag("h1", parse_line(lines[i]))
+			} else {
+				ret = ret tag("h1", parse_line(lines[i]))
+			}
 		} else if (lines[i + 1] ~ /^--+/) {
-			ret = ret tag("h2", parse_line(lines[i]))
+			if (slide == "hamaji" || slide == "shinh" || slide == "simple" || slide == "s") {
+				ret = ret parse_line(lines[i])
+			} else {
+				ret = ret tag("h2", parse_line(lines[i]))
+			}
 		} else if (lines[i] ~ /^==+/ || lines[i] ~ /^--+/) {
-			ret = ret "<hr />"
+			if (lines[i] ~ /^==+/ && (slide == "hamaji" || slide == "shinh" || slide == "simple" || slide == "s")) {
+			} else {
+				ret = ret "<hr />"
+			}
 		}else if (lines[i] ~ /^[[:space:]]*>/) {
 			ret = ret "<blockquote>"
 			for (; lines[i] ~ /^[[:space:]]*>/; i++) {
@@ -80,13 +91,25 @@ function parse_para(para,   lines, ret) {
 BEGIN {
 	RS = ""
 	FS = "\n"
+	slide = "simple"
+	filename = gensub(/(.*)\.md/, "\\1", "g", ARGV[1])
+	"mkdir -p " filename | getline
+	print ARGV[1] "-> ./" filename "/" filename ".html"
 }
 
 {
-	body = body tag("p", parse_para($0))
+	if (slide == "hamaji" || slide == "shinh" || slide == "simple" || slide == "s") {
+		body = parse_para($0)
+		print "<!DOCTYPE html>" tag("html", tag("head","<meta charset=\"UTF-8\">") tag("body",
+				tag("a", "&lt;", "href = \"./" filename NR-1 ".html\"") \
+				tag("a", "&gt;", "href = \"./" filename NR+1 ".html\"") \
+				tag("p", headline body) \
+				)) >  "./" filename "/" filename NR ".html"
+	} else {
+		body = body tag("p", parse_para($0))
+	}
 
 }
 
 END {
-	print "<!DOCTYPE html>" tag("html", tag("head","<meta charset=\"UTF-8\">") tag("body", body))
 }
