@@ -1,16 +1,16 @@
 function parse_line(line,   ret) {
-	if (line ~ /^#[[:space:]]*[^[:space:]].*[^[:space:]][[:space:]]*$/) {
-		ret = ret tag("h1", parse_line(gensub(/^#[[:space:]]*([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
-	} else if (line ~ /^##[[:space:]]*[^[:space:]].*[^[:space:]][[:space:]]*$/) {
-		ret = ret tag("h2", parse_line(gensub(/^##[[:space:]]*([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
-	} else if (line ~ /^###[[:space:]]*[^[:space:]].*[^[:space:]][[:space:]]*$/) {
-		ret = ret tag("h3", parse_line(gensub(/^###[[:space:]]*([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
-	} else if (line ~ /^####[[:space:]]*[^[:space:]].*[^[:space:]][[:space:]]*$/) {
-		ret = ret tag("h4", parse_line(gensub(/^####[[:space:]]*([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
-	} else if (line ~ /^#####[[:space:]]*[^[:space:]].*[^[:space:]][[:space:]]*$/) {
-		ret = ret tag("h5", parse_line(gensub(/^#####[[:space:]]*([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
-	} else if (line ~ /^######[[:space:]]*[^[:space:]].*[^[:space:]][[:space:]]*$/) {
-		ret = ret tag("h6", parse_line(gensub(/^######[[:space:]]*([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
+	if (line ~ /^#[[:space:]]+[^[:space:]].*[^[:space:]][[:space:]]*$/) {
+		ret = ret tag("h1", parse_line(gensub(/^#[[:space:]]+([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
+	} else if (line ~ /^##[[:space:]]+[^[:space:]].*[^[:space:]][[:space:]]*$/) {
+		ret = ret tag("h2", parse_line(gensub(/^##[[:space:]]+([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
+	} else if (line ~ /^###[[:space:]]+[^[:space:]].*[^[:space:]][[:space:]]*$/) {
+		ret = ret tag("h3", parse_line(gensub(/^###[[:space:]]+([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
+	} else if (line ~ /^####[[:space:]]+[^[:space:]].*[^[:space:]][[:space:]]*$/) {
+		ret = ret tag("h4", parse_line(gensub(/^####[[:space:]]+([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
+	} else if (line ~ /^#####[[:space:]]+[^[:space:]].*[^[:space:]][[:space:]]*$/) {
+		ret = ret tag("h5", parse_line(gensub(/^#####[[:space:]]+([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
+	} else if (line ~ /^######[[:space:]]+[^[:space:]].*[^[:space:]][[:space:]]*$/) {
+		ret = ret tag("h6", parse_line(gensub(/^######[[:space:]]+([^[:space:]].*[^[:space:]])[[:space:]]*$/, "\\1", "g", line)))
 	} else if (line ~ /\*\*[^[:space:]].*[^[:space:]]\*\*/) {
 		ret = ret parse_line(gensub(/\*\*([^[:space:]].*[^[:space:]])\*\*/, "<strong>\\1</strong>", "g", line))
 	} else if (line ~ /__[^[:space:]].*[^[:space:]]__/) {
