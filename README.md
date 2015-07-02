@@ -16,7 +16,7 @@ h2
 * __*also*__
 * ***ok***
 
-> blockquote is work.
+> blockquote works.
 > > but,
 > > nested blockquote
 > didnt work.
@@ -28,3 +28,7 @@ h2
   * work
   * too.
 
+```
+<code> tag
+ works    well.
+```

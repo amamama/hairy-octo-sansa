@@ -63,12 +63,13 @@ function parse_para(para,   lines, ret) {
 			i--
 			ret = ret "</ol>"
 		} else if (lines[i] ~ /^```/) {
-			ret = ret "<code>"
-			for (; lines[i] !~ /^```/; i++) {
-				ret lines[i] "<br />"
+			ret = ret "<pre><code>"
+			for (i++; lines[i] !~ /^```/; i++) {
+				gsub(/>/, "\\&gt;", lines[i])
+				gsub(/</, "\\&lt;", lines[i])
+				ret = ret  lines[i] "\n"
 			}
-			i--
-			ret = ret "</code>"
+			ret = ret "</code></pre>"
 		} else {
 			ret = ret parse_line(lines[i])
 		}
@@ -79,17 +80,13 @@ function parse_para(para,   lines, ret) {
 BEGIN {
 	RS = ""
 	FS = "\n"
-	print "<!DOCTYPE html>""<html>"
-	print tag("head","<meta charset=\"UTF-8\">")
-	print "<body>"
 }
 
 {
-	print tag("p", parse_para($0))
+	body = body tag("p", parse_para($0))
 
 }
 
 END {
-	print "</body>"
-	print "</html>"
+	print "<!DOCTYPE html>" tag("html", tag("head","<meta charset=\"UTF-8\">") tag("body", body))
 }
