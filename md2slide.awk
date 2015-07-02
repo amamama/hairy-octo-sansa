@@ -37,7 +37,7 @@ function parse_para(para,   lines, ret) {
 	for (i = 1; i <= max_idx; i++) {
 		if (lines[i + 1] ~ /^==+/) {
 			if (slide == "hamaji" || slide == "shinh" || slide == "simple" || slide == "s") {
-				headline = tag("h1", parse_line(lines[i]))
+				headline = tag("h1", parse_line(lines[i])) "<hr />"
 			} else {
 				ret = ret tag("h1", parse_line(lines[i]))
 			}
