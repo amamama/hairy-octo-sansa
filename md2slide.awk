@@ -1,5 +1,5 @@
 function parse_line(line,   ret) {
-	if (line ~ /^==+/ || lines ~ /^--+/) {
+	if (line ~ /^==+/ || line ~ /^--+/) {
 		if (line ~ /^==+/ && (slide == "hamaji" || slide == "shinh" || slide == "simple" || slide == "s")) {
 		} else {
 			ret = ret "<hr />"
@@ -141,10 +141,10 @@ BEGIN {
 {
 	if (slide == "hamaji" || slide == "shinh" || slide == "simple" || slide == "s") {
 		body = parse_para($0)
-		print "<!DOCTYPE html>" tag("html", tag("head","<meta charset=\"UTF-8\">") tag("body",
+		print "<!DOCTYPE html>" tag("html", tag("head","<meta charset=\"UTF-8\"> <link rel=\"stylesheet\" type=\"text/css\" href=\"../template.css\">" "<script type = \"text/javascript\" src = \"../template.js\"></script>") tag("body",
 				tag("a", "&lt;", "href = \"./" filename NR-1 ".html\"") \
 				tag("a", "&gt;", "href = \"./" filename NR+1 ".html\"") \
-				tag("section", headline body) \
+				headline tag("section", body), "onload = \"adjust_fontsize()\"" \
 				)) >  "./" filename "/" filename NR ".html"
 	} else {
 		body = body tag("p", parse_para($0))
