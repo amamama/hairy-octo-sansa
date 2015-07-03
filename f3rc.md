@@ -5,7 +5,7 @@
 ## 発表者
 リーダー 天津健
 
-このスライドは(https://github.com/amamama/hairy-octo-sansa/tree/master)[https://github.com/amamama/hairy-octo-sansa/tree/master]
+このスライドは[https://github.com/amamama/hairy-octo-sansa/tree/master](https://github.com/amamama/hairy-octo-sansa/tree/master)
 で閲覧可能です
 - **User** amamama
 - **repository** hairy-octo-sansa
