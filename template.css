@@ -5,3 +5,9 @@ body {
 	background-color : rgba(32, 32, 48, 196);
 	color: rgba(240, 240, 224, 240);
 }
+
+body > p {
+	display : block;
+	border-radius : 1%;
+	background-color : rgba()48, 48, 64, 196;
+}
