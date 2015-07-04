@@ -5,11 +5,12 @@
 ## 発表者
 リーダー 天津健
 
-このスライドは[https://github.com/amamama/hairy-octo-sansa/tree/master](https://github.com/amamama/hairy-octo-sansa/tree/master)
+このスライドは[http://amamama.github.io/hairy-octo-sansa/f3rc/f3rc1.html](http://amamama.github.io/hairy-octo-sansa/f3rc/f3rc1.html)
 で閲覧可能です
-- **User** amamama
-- **repository** hairy-octo-sansa
-- # hairy-octo-sansa
+- User **amamama**
+- repository **hairy-octo-sansa**
+---
+## ***hairy-octo-sansa***
 
 もう皆さんお分かりかと思いますが，このスライドはmarkdownで書かれたものをhtmlに変換したものです．
 よって見難いスライドも存在するとは思いますが，ご容赦願います．
@@ -111,7 +112,7 @@ Vゴールの達成条件は
 ====
 # 進捗ダメです!!!
 (ここにペンギンコラを貼る)
-### もし8月までに斜体が完成しなかったら桜の木の下に埋めてもらっても構わないよ!!!
+### もし8月末までに車体が完成しなかったら桜の木の下に埋めてもらっても構わないよ!!!
 (ここに1コマ目を貼る)
 
 ***ババーン!!***
