@@ -7,3 +7,9 @@ function adjust_fontsize() {
 	var winH = (window.innerHeight||document.documentElement.clientHeight||0);
 	css.insertRule("html { font-size : " + winH/20 + "px ; }", idx);
 }
+
+window.addEventListener( 'resize', function() {
+	adjust_fontsize();
+	//resize();
+}, false );
+ 
