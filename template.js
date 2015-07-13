@@ -8,7 +8,7 @@ function adjust_fontsize() {
 	var css = document.styleSheets.item(1);
 	var idx = document.styleSheets[1].cssRules.length;
 	var winH = (window.innerHeight||document.documentElement.clientHeight||0);
-	css.insertRule("html { font-size : " + winH/20 + "px ; }", idx);
+	css.insertRule("html { font-size : " + winH/25 + "px ; }", idx);
 }
 
 window.addEventListener( 'resize', function() {
