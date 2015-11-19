@@ -15,4 +15,13 @@ window.addEventListener( 'resize', function() {
 	adjust_fontsize();
 	//resize();
 }, false );
- 
+
+window.addEventListener( 'keyup', function(e){
+	var kc = e.keyCode;
+	switch(kc) {
+	case 37 : location.href;
+		break;
+	case 39 : location.href;
+		break;
+	}
+}, false );
