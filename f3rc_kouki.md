@@ -77,7 +77,7 @@ SPI通信を用いてPS2コントローラと通信した．\n
 
 ちなみに
 ==========
-このスライドは[]()
+このスライドは[http://amamama.github.io/hairy-octo-sansa/f3rc_kouki/f3rc_kouki1.html](http://amamama.github.io/hairy-octo-sansa/f3rc_kouki/f3rc_kouki1.html)
 で閲覧可能です
 - User **amamama**
 - repository **hairy-octo-sansa**
